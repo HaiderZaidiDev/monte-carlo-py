@@ -15,13 +15,12 @@ def monte_carlo(pv, time_horizon, additions):
     :param additions: Marginal investment made by year.
     :return: Ending pv for the year.
     """
-    temp = []
+    yearly_returns = []# List of all investment returns for the time horizon
     for year in range(time_horizon):
         i = random.uniform(0.05, 0.12)
-        ending = pv*(1+i) + additions #10000 * 1.07 + 10000
-        pv = ending
-        temp.append(pv)
-    horizon_return = temp[-1]
+        pv = pv*(1+i) + additions # Investment return per year, with additions.
+        yearly_returns.append(pv) # Adds value of investment return per year to list.
+    horizon_return = yearly_returns[-1] # Final investment return at the end of the time horizion.
     return horizon_return
 
 num_of_iter = 5000
